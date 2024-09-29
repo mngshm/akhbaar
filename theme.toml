@@ -1,0 +1,24 @@
+name = 'Akhbaar'
+license = 'MIT'
+licenselink = 'https://github.com/mangeshrex/akhbaar'
+description = 'An attempt at making a hugo theme resembling an old newspaper'
+
+# The home page of the theme, where the source can be found
+homepage = 'https://github.com/mangeshrex/akhbaar'
+
+# If you have a running demo of the theme
+demosite = 'https://mangeshm.xyz'
+
+# Taxonomy terms
+tags = ['blog', 'company', "newspaper"]
+features = ['blogpage', 'newspaper styled', 'akhbaar']
+
+# If the theme has multiple authors
+authors = [
+  {name = 'Mangesh Mane', homepage = 'https://mangeshm.xyz'}
+]
+
+# If the theme has a single author
+[author]
+  name = 'Mangesh Mane'
+  homepage = 'https://mangeshm.xyz'

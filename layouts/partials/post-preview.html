@@ -1,0 +1,12 @@
+<div class="blog-post">
+	<div class="matter">
+		<h3 class="title small">
+			<a href="{{ .RelPermalink }}">{{.Title}}{{ if .Draft }}<sup class="draft-label">DRAFT</sup>{{ end }}</a>
+		</h4>
+	</div>
+	<div class="meta">
+		<div class="date-singles">
+			<span class="rest">{{ .Date.Format (default "2 Jan, 2006" $.Site.Params.dateFormat) }}</span>
+		</div>
+	</div>
+</div>

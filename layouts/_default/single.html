@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+{{ partial "header.html" . }}
+<article>
+	<div class="container wrapper">
+		<div class="post">
+			<div class="post-header">
+				<div class="site-dish">
+					<div class="matter">
+						<h1 class="title">{{ .Title }}</h1>
+						<span>
+							<img src="/separator.png" alt="decorator">
+						</span>
+					</div>
+					{{ if ne .Date.Year 1 }}
+					<div class="meta">
+						<span class="description">
+							{{ if isset .Params "description" }}
+							{{ .Description }}
+							{{ else if gt (countrunes (.Content | plainify)) 300 }}
+							{{ slicestr (.Content | plainify) 0 300 | safeHTML }}...
+							{{ else }}
+							{{ .Content | plainify | safeHTML }}
+							{{ end }}
+						</span>
+						<div class="date">
+							Published on
+							<span class="day">{{ dateFormat "02" .Date }}</span>
+							<span class="rest">{{ if $.Site.Data.month }}{{ index $.Site.Data.month (printf "%d"
+								.Date.Month) }} {{ .Date.Year }}{{ else }}{{ dateFormat "Jan 2006" .Date }}{{ end
+								}}</span>
+						</div>
+						<div class="tags">
+							{{ if ne .Type "page" }}
+							{{ if gt .Params.tags 1 }}
+							{{ range .Params.tags }}
+							<span># {{ . }}</span>
+							{{ end }}
+							{{ end }}
+							{{ end }}
+						</div>
+					</div>
+				</div>
+				<div class="markdown">
+					{{ .Content }}
+				</div>
+				{{ end }}
+				</div>
+		</div>
+	</div>
+	</div>
+</article>
+{{ partial "footer.html" . }}
+
+</html>
