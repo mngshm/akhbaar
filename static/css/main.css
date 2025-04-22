@@ -1,19 +1,31 @@
 @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=UnifrakturCook&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@100..900&display=swap');
 
+@font-face {
+    font-family: 'Chomsky'; /*a name to be used later*/
+    src: url('https://mangeshm.xyz/css/Chomsky.otf')format("opentype");
+    font-weight: 400;
+    font-style: normal; /*URL to font*/
+}
+
+
+html {
+    max-width: 100%;
+    margin: 0%;
+}
+
 body {
-    font-family: "EB Garamond", "Noto Sans Devnagari", sans-serif !important;
+    font-family: "EB Garamond", "Noto Sans Devnagari", "Chomsky", sans-serif !important;
     font-weight: 400;
     color: #333;
-    line-height: 1.8em;
     font-size: 17px;
     background: url(/background.png);
     background-size: 70%;
     background-repeat: repeat;
-    /* background-color: #F5F2E8; */
-    margin: 0;
+    max-width: 950px;
+    box-sizing: border-box;
+    margin: auto;
 }
 
 a {
@@ -24,6 +36,14 @@ a {
 
 a:hover {
     color: black !important;
+}
+
+.my-avatar {
+  height: max-content; 
+  width: 300px;
+  margin: auto;
+  float: right;
+  padding: 10px;
 }
 
 html,
@@ -120,14 +140,13 @@ i {
 }
 
 blockquote {
-    font-family: "Unifraktur", cursive !important;
-    margin-left: 1rem;
-    font-style: italic;
-    font-size: 1.2rem;
-    font-family: Georgia, bitstream charter, serif;
-    border-left: 3px solid;
-    border-color: #FFB7D6;
-    padding-left: 20px;
+  margin-left: 1rem;
+  font-family: "EB Garamond", serif !important;
+  font-style: italic;
+  font-size: 1.2rem;
+  border-left: 3px solid;
+  border-color: #FFB7D6;
+  padding-left: 20px;
 }
 
 blockquote cite {
@@ -235,7 +254,7 @@ li {
 }
 
 .post a:hover {
-    color: bblack !important;
+    color: black !important;
     font-style: italic;
 }
 
@@ -247,6 +266,22 @@ li {
     filter: grayscale(100%);
 }
 
+.articles {
+    display: grid;
+    grid-column-gap: 32px;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1.5fr));
+    grid-template-rows: masonry;
+    justify-content: space-around;
+}
+
+.markdown p {
+    text-align: left;
+    line-height: none !important;
+}
+
+.markdown em {
+  text-align: center;
+}
 .highlight pre {
     margin-bottom: 0;
     margin-top: 0;
@@ -261,8 +296,6 @@ li {
 em {
     display: block;
     font-style: italic;
-    text-align: center !important;
-    font-size: 19px;
 }
 
 .wrapper {
@@ -271,8 +304,9 @@ em {
 }
 
 .container {
-    max-width: 800px;
+    max-width: 950px;
     margin-top: 30px;
+    padding: 10px;
 }
 
 .header-div {
@@ -298,27 +332,31 @@ em {
 }
 
 .header .site-title {
+    font-family: "Chomsky";
+    font-size: 5rem;
     margin: 0;
     text-align: center;
 }
 
 .header .site-description {
-    text-align: center;
-    font-size: 20px;
     padding-top: 10px;
     border-top: 1px solid black;
     border-bottom: 1px solid black;
 }
 
 .header .site-description p {
-    margin: 0 0 10px 0;
+  text-align: center;
+  font-size: 20px;
+  max-width: 700px;
+  padding-bottom: 10px;
+  margin: auto;
 }
 
 .header nav {
     border-top: 1px solid #eee;
     padding-top: 15px;
     display: flex;
-    justify-content: space-between
+    justify-content: center
 }
 
 .header nav ul,
@@ -368,8 +406,7 @@ em {
 
 .header .site-description .scheme-toggle a.light svg {
     fill: grey;
-    color: black;
-}
+    color: black;}
 
 .section .section-header {
     font-size: 0.75rem;
@@ -381,38 +418,42 @@ em {
 }
 
 .markdown {
-    max-width: 800px;
+    max-width: auto;
+    padding: 10px 20px;
 }
 
 .post-header {
-    display: flex;
+    display: block;
     gap: 20px;
     justify-content: space-between;
+    box-sizing: border-box;
+    border-right: 1px solid black;
+    border-left: 1px solid black;
+    border-bottom: 1px solid black;
 }
 
 .blog-post {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    padding-bottom: 10px;
 }
 
 .blog-post a {
     text-decoration: none !important;
 }
 
-.post-header .site-dish {
-    max-width: 550px;
+.blog-post .summary {
+  font-size: 20px;
 }
 
-
-.site-dish .description {
-    font-size: 20px;
+.details {
+  font-size: 20px !important;
+  text-align: center !important;
 }
 
 .post-header .site-dish .title {
-    background-color: #e8ebf5;
-    padding: 10px;
-    text-align: left;
+        text-align: left;
     text-transform: capitalize !important;
 }
 
@@ -423,9 +464,19 @@ em {
 .post-header h1.title {
     margin: -10px 0 0 0;
     text-align: center;
-    font-size: 2.5rem;
+    font-size: 4rem !important;
 }
 
+.blog-matter {
+    box-sizing: border-box;
+    border-top: 1px solid black;
+    padding: 15px 15px;
+}
+
+.blog-matter .details .title {
+  text-align: center;
+  font-size: 50px !important;
+}
 .post .title.small {
     margin: 0 0 10px 0;
 }
@@ -470,34 +521,74 @@ em {
 
 .posts {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-column-gap: 32px;
+    /* grid-template-columns: 1fr 1fr 1fr; */
+    grid-column-gap: 20px;
     grid-auto-flow: dense;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1.5fr));
+    grid-template-rows: masonry;
 }
 
-.post {
-    border-top: 2px solid black;
-    padding: 1rem 0rem;
+.article-content .post {
+    /* border-top: 2px solid black; */
+    box-sizing: border-box;
+    border-bottom: 1px solid black;
+    padding: 10px 0px;
 }
 
-.list .posts .post-header .meta {
-    margin-bottom: 0;
-    margin-left: 5px;
+.post-content .post {
+    box-sizing: border-box;
+    border-bottom: 1px solid black;
+
+    padding: 10px 0px;
+}
+.poems-content .post {
+    box-sizing: border-box;
+    padding: 10px 0px;
+} 
+
+.meta {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    box-sizing: border-box;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
 }
 
-.redirect-home {
-    float: right !important;
-    font-size: 20px;
+.meta .post-type {
+    text-align: center;
+    width:100%;
+    box-sizing: border-box;
+    border-left: 1px solid black;
 }
 
-.redirect-home svg {
-    font-size: 12px;
+.meta .home-button {
+    width: 100%;
+}
+.meta a {
+    width: max-content;
 }
 
 .meta .date {
-    font-size: 18px;
-}
+    width: 100%;
+    text-align: center;
+    box-sizing: border-box;
+    border-left: 1px solid black;
 
+}
+.home-button {
+    display: flex;
+    align-content: center;
+    margin: auto;
+}
+.redirect-home {
+    width: max-content;
+    height: 100%;
+    padding: 0px 20px;
+    align-items: center;
+    top: 0%;
+    bottom: 0%;
+}
 .footer {
     display: flex;
     flex-direction: column;
@@ -609,37 +700,52 @@ em {
     .posts {
         grid-template-columns: 1fr 1fr;
     }
+    .articles {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
 }
 
 @media (max-width: 576px) {
-    .header .nav.social {
-        min-width: auto;
-        margin: 0;
-    }
+  .header .nav.social {
+    min-width: auto;
+    margin: 0;
+  }
+  .site-title {
+    font-size: 2rem !important;
+  }
+  .blog-matter .details .title {
+    text-align: center;
+    font-size: 30px !important;
+  }
+  .header .site-description {
+    font-size: 1em;
+    margin-top: 10px;
+    font-size: 0.875em;
+    line-height: 1.4em;
+  }
 
-    .header .site-description {
-        font-size: 1em;
-        margin-top: 10px;
-        font-size: 0.875em;
-        line-height: 1.4em;
-    }
+  .meta .date-singles {
+    font-size: 15px;
+  }
 
-    .meta .date-singles {
-        font-size: 15px;
-    }
-
-    .post-header {
-        flex-direction: column;
-    }
-
-    .post-header .title {
-        font-size: 30px !important;
-    }
-
-    .blog-post {
-        flex-direction: row;
-    }
-    .posts {
-        grid-template-columns: 1fr;
-    }
+  .post-header {
+    flex-direction: column;
+  }
+  .post-header .title {
+    font-size: 30px !important;
+  }
+  .post .title {
+    font-size: 1.5rem;
+  }
+  .blog-post {
+    flex-direction: row;
+  }
+  .posts {
+    grid-template-columns: 1fr;
+  }
+  .articles {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
 }
