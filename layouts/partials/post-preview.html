@@ -6,10 +6,10 @@
 			</div>
 			<a href="{{ .RelPermalink }}">{{.Title}}{{ if .Draft }}<sup class="draft-label">DRAFT</sup>{{ end }}</a>
 			</h4>
-			<p class="description">
+			<p class="summary">
 				<span>{{ .Description }}</span>
 			</p>
-			<div class="meta">
+			<div class="list-meta">
 				<div class="date-singles">
 					<span class="rest">{{ .Date.Format (default "2 Jan, 2006" $.Site.Params.dateFormat) }}</span>
 				</div>
