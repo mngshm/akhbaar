@@ -1,7 +1,67 @@
-{{ define "main" }}
-  {{ .Content }}
-  {{ range site.RegularPages }}
-    <h2><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h2>
-    {{ .Summary }}
-  {{ end }}
-{{ end }}
+<!DOCTYPE html>
+<html {{- if (eq .Site.Params.mode "dark" ) -}}class="dark" {{ end }}>
+{{ partial "header.html" . }}
+
+<body>
+  <div class="container wrapper">
+    {{ partial "head.html" . }}
+    <div class="recent-posts section">
+      <h2>Featured</h2>
+      <!-- Featured Section -->
+      {{ $featured := where .Site.RegularPages ".Params.featured" 1 }}
+      <div class="posts featured">
+        {{ range $featured }}
+        <div class="post">
+          {{ partial "post-preview.html" . }}
+        </div>
+        {{ end }}
+      </div>
+    </div>
+
+    <div>
+      <div class="section">
+        <h2>Posts</h2>
+        <div class="posts">
+          {{ $posts := where .Site.RegularPages "Section" "posts" }}
+          {{ range $posts }}
+          <div class="post">
+            {{ partial "post-preview.html" . }}
+          </div>
+          {{ end }}
+        </div>
+      </div>
+    </div>
+
+    <!-- Essays Section -->
+    <h2>Essays</h2>
+    <div class="section">
+      <div class="posts essays">
+        {{ $essays := where .Site.RegularPages "Section" "essays" }}
+        {{ range $essays }}
+        <div class="post">
+          {{ partial "post-preview.html" . }}
+        </div>
+        {{ end }}
+      </div>
+    </div>
+
+    <!-- Poems Section -->
+    <div class="section poems">
+      <h2>Poems</h2>
+      <div class="posts">
+        {{ $poems := where .Site.RegularPages "Section" "poems" }}
+        {{ range $poems }}
+        <div class="post">
+          {{ partial "post-preview.html" . }}
+        </div>
+        {{ end }}
+      </div>
+    </div>
+  </div>
+  </div>
+  </div>
+  </div>
+  {{ partial "footer.html" . }}
+</body>
+
+</html>
