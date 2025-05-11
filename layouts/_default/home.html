@@ -6,12 +6,18 @@
   <div class="container wrapper">
     {{ partial "head.html" . }}
     <div class="recent-posts section">
-      <h2>Featured</h2>
+      <h2 class="section-headers">Featured</h2>
+      {{ $mostRecent := first 1 (.Site.RegularPages.ByDate.Reverse) }}
+      {{ range $mostRecent }}
+      <div class="most-recent">
+        {{ partial "post-preview.html" . }}
+      </div>
+      {{ end }}
       <!-- Featured Section -->
       {{ $featured := where .Site.RegularPages ".Params.featured" 1 }}
       <div class="posts featured">
         {{ range $featured }}
-        <div class="post">
+        <div class="">
           {{ partial "post-preview.html" . }}
         </div>
         {{ end }}
@@ -20,11 +26,11 @@
 
     <div>
       <div class="section">
-        <h2>Posts</h2>
+        <h2 class="section-headers">Posts</h2>
         <div class="posts">
           {{ $posts := where .Site.RegularPages "Section" "posts" }}
           {{ range $posts }}
-          <div class="post">
+          <div class="">
             {{ partial "post-preview.html" . }}
           </div>
           {{ end }}
@@ -33,27 +39,23 @@
     </div>
 
     <!-- Essays Section -->
-    <h2>Essays</h2>
     <div class="section">
+      <h2 class="section-headers">Essays</h2>
       <div class="posts essays">
         {{ $essays := where .Site.RegularPages "Section" "essays" }}
         {{ range $essays }}
-        <div class="post">
-          {{ partial "post-preview.html" . }}
-        </div>
+        {{ partial "post-preview.html" . }}
         {{ end }}
       </div>
     </div>
 
     <!-- Poems Section -->
     <div class="section poems">
-      <h2>Poems</h2>
+      <h2 class="section-headers">Poems</h2>
       <div class="posts">
         {{ $poems := where .Site.RegularPages "Section" "poems" }}
         {{ range $poems }}
-        <div class="post">
-          {{ partial "post-preview.html" . }}
-        </div>
+        {{ partial "post-preview.html" . }}
         {{ end }}
       </div>
     </div>
