@@ -2,60 +2,60 @@
 <html>
 {{ partial "header.html" . }}
 <article>
-	<div class="container wrapper">
-		<div class="post">
-			<div class="post-header">
-				<div class="site-dish">
+  <div class="container wrapper">
+    <div class="post">
+      <div class="post-header">
+        <div class="site-dish">
           <div class="blog-matter">
             <div class="details">
-                <h1 class="title">{{ .Title }}</h1>
-                <span class="description">
-                  {{ if isset .Params "description" }}
-                  {{ .Description }}
-                  {{ else if gt (countrunes (.Content | plainify)) 300 }}
-                  {{ slicestr (.Content) 0 300 | safeHTML }}...
-                  {{ else }}
-                  {{ .Content | plainify | safeHTML }}
-                  {{ end }}
-                </span>
-              </div>
-              {{ if ne .Date.Year 1 }}
+              <h1 class="title">{{ .Title }}</h1>
+              <span class="description">
+                {{ if isset .Params "description" }}
+                {{ .Description }}
+                {{ else if gt (countrunes (.Content | plainify)) 300 }}
+                {{ slicestr (.Content) 0 300 | safeHTML }}...
+                {{ else }}
+                {{ .Content | plainify | safeHTML }}
+                {{ end }}
+              </span>
             </div>
-            <div class="meta">
+            {{ if ne .Date.Year 1 }}
+          </div>
+          <div class="meta">
             <div class="redirect-home">
               <a href="{{ .Site.BaseURL }}">
                 <div class="home-button">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="#000000"
-                      viewBox="0 0 256 256">
-                      <path
-                        d="M165.66,202.34a8,8,0,0,1-11.32,11.32l-80-80a8,8,0,0,1,0-11.32l80-80a8,8,0,0,1,11.32,11.32L91.31,128Z">
-                      </path>
-                    </svg>
-                  </div>
-                </a>
-              </div>
-              <div class="post-type">
-                <h3>{{ upper .Type }}</h3>
-              </div>
-              <div class="date">
-                <h4 class="day-date">
-                  {{ dateFormat "02" .Date }} {{ if $.Site.Data.month }}{{ index $.Site.Data.month
-								(printf
-								"%d"
-								.Date.Month) }} {{ .Date.Year }}{{ else }}{{ dateFormat "Jan 2006" .Date }}{{ end
-								}}</h4>
-						</div>
-					</div>
-				</div>
-			</div>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="#000000" viewBox="0 0 256 256">
+                    <path
+                      d="M165.66,202.34a8,8,0,0,1-11.32,11.32l-80-80a8,8,0,0,1,0-11.32l80-80a8,8,0,0,1,11.32,11.32L91.31,128Z">
+                    </path>
+                  </svg>
+                </div>
+              </a>
+            </div>
+            <div class="post-type">
+              <h3>{{ upper .Type }}</h3>
+            </div>
+            <div class="date">
+              <h4 class="day-date">
+                {{ dateFormat "02" .Date }} {{ if $.Site.Data.month }}{{ index $.Site.Data.month
+                (printf
+                "%d"
+                .Date.Month) }} {{ .Date.Year }}{{ else }}{{ dateFormat "Jan 2006" .Date }}{{ end
+                }}</h4>
+            </div>
+          </div>
+        </div>
+      </div>
       <div class="markdown">
         {{ .Content }}
       </div>
       {{ end }}
 
-		</div>
-	</div>
-	</div>
+    </div>
+  </div>
+  </div>
 </article>
 {{ partial "footer.html" . }}
+
 </html>
