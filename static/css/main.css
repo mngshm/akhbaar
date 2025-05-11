@@ -278,14 +278,10 @@ li {
   justify-content: space-around;
 }
 
-.markdown p {
+.post  .markdown p {
   text-align: left;
-  line-height: none !important;
 }
 
-.markdown em {
-  text-align: left;
-}
 .highlight pre {
   margin-bottom: 0;
   margin-top: 0;
@@ -422,6 +418,9 @@ em {
 .markdown {
   max-width: auto;
   padding: 10px 20px;
+  border-bottom: 1px solid black;
+  border-right: 1px solid black;
+  border-left: 1px solid black;
 }
 
 .post-header {
@@ -446,6 +445,7 @@ em {
 .blog-post .matter {
   width: 100%;
 }
+
 .blog-post a {
   text-decoration: none !important;
 }
@@ -483,18 +483,10 @@ em {
   text-align: center;
   font-size: 50px !important;
 }
-.post .title.small {
-  margin: 0 0 10px 0;
-}
-
 .post p {
   font-size: 22px;
 }
 
-.post {
-  height: auto;
-  vertical-align: top;
-}
 .post .draft-label {
   color: black;
   text-decoration: none;
@@ -527,7 +519,6 @@ em {
 
 .posts {
   display: grid;
-  /* grid-template-columns: 1fr 1fr 1fr; */
   grid-column-gap: 20px;
   grid-auto-flow: dense;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1.5fr));
@@ -551,9 +542,13 @@ em {
 .recent-posts .blog-post {
   border-bottom: none;
 }
-.poems .post {
+
+.post .poem {
   box-sizing: border-box;
   padding: 10px 0px;
+} 
+.post .poems em {
+  text-align: left !important;
 } 
 
 .featured .most-recent {
@@ -571,7 +566,6 @@ em {
   align-items: center;
   box-sizing: border-box;
   border-top: 1px solid black;
-  border-bottom: 1px solid black;
 }
 
 .meta .post-type {
